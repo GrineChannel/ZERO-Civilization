@@ -1,3 +1,4 @@
+import {economyDay} from "../economy/model.js";
 import {politicalDay} from "../politics/engine.js";
 import {advanceDay} from "./model.js";
 import {listSocieties,saveSociety} from "./storage.js";
@@ -8,5 +9,5 @@ export function tickSocieties(){
  if(!societies.length)return;
  cursor%=societies.length;
  const s=societies[cursor++];
- try{advanceDay(s);politicalDay(s);saveSociety(s);}catch(e){console.warn("[ZERO Civ society] "+e);}
+ try{advanceDay(s);politicalDay(s);economyDay(s);saveSociety(s);}catch(e){console.warn("[ZERO Civ society] "+e);}
 }
