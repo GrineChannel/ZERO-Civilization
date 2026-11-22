@@ -1,0 +1,4 @@
+*.mcpack
+*.mcaddon
+.DS_Store
+node_modules/
