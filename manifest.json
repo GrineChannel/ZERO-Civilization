@@ -1,0 +1,46 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "ZERO Civilization",
+    "description": "Autonomous civilizations simulation",
+    "uuid": "b9e64f3c-8e90-4e8b-86d2-1e1f9162c251",
+    "version": [
+      0,
+      1,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      40
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "d9b11372-0ca1-4b63-8ed4-724e32d53af9",
+      "version": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js",
+      "uuid": "73e238d5-4cf4-4fb4-984e-b4d15c792f52",
+      "version": [
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.16.0"
+    }
+  ]
+}
