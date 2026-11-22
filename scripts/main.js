@@ -1,3 +1,4 @@
+import {politicsCommand} from "./politics/commands.js";
 import {tickSocieties} from "./society/simulation.js";
 import {societyCommand} from "./society/commands.js";
 import {world,system} from "@minecraft/server";
@@ -14,6 +15,7 @@ world.beforeEvents.chatSend.subscribe(event=>{
   system.run(()=>{
     try{
       if(societyCommand(player,args))return;
+      if(politicsCommand(player,args))return;
       if(args[1]==="start")player.sendMessage(grantStarterResources(player)?"§aStarter stock granted":"§eAlready claimed");
       else if(args[1]==="recruit"){const c=recruit(player);player.sendMessage("§aBuilder recruited #"+c.id);}
       else if(args[1]==="crew"){
@@ -27,7 +29,7 @@ world.beforeEvents.chatSend.subscribe(event=>{
         player.sendMessage(jobs.length?jobs.map(j=>j.blueprintId+": "+j.status+" ("+j.progress+"/"+BLUEPRINTS[j.blueprintId].blocks.length+")").join("\n"):"No jobs");
       }else if(args[1]==="stock"){
         const r=resources(player.id);player.sendMessage("Wood: "+r.wood+" | Stone: "+r.stone);
-      }else player.sendMessage("§6!civ found <name> | society | events | start | recruit | crew | build hut | jobs | stock");
+      }else player.sendMessage("§6!civ found <name> | society | events | politics | government | laws | law | start | recruit | crew | build hut | jobs | stock");
     }catch(e){player.sendMessage("§c"+String(e));}
   });
 });
