@@ -1,3 +1,4 @@
+import {educationDay} from "../education/model.js";
 import {researchDay} from "../research/model.js";
 import {militaryDay} from "../military/model.js";
 import {economyDay} from "../economy/model.js";
@@ -11,5 +12,5 @@ export function tickSocieties(){
  if(!societies.length)return;
  cursor%=societies.length;
  const s=societies[cursor++];
- try{advanceDay(s);politicalDay(s);economyDay(s);militaryDay(s);researchDay(s);saveSociety(s);}catch(e){console.warn("[ZERO Civ society] "+e);}
+ try{advanceDay(s);politicalDay(s);economyDay(s);militaryDay(s);researchDay(s);educationDay(s);saveSociety(s);}catch(e){console.warn("[ZERO Civ society] "+e);}
 }
