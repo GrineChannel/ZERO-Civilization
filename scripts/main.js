@@ -1,3 +1,4 @@
+import {educationCommand} from "./education/commands.js";
 import {researchCommand} from "./research/commands.js";
 import {diplomacyCommand} from "./diplomacy/commands.js";
 import {militaryCommand} from "./military/commands.js";
@@ -26,6 +27,7 @@ world.beforeEvents.chatSend.subscribe(event=>{
       if(militaryCommand(player,args))return;
       if(diplomacyCommand(player,args))return;
       if(researchCommand(player,args))return;
+      if(educationCommand(player,args))return;
       if(args[1]==="start")player.sendMessage(grantStarterResources(player)?"§aStarter stock granted":"§eAlready claimed");
       else if(args[1]==="recruit"){const c=recruit(player);player.sendMessage("§aBuilder recruited #"+c.id);}
       else if(args[1]==="crew"){
@@ -39,7 +41,7 @@ world.beforeEvents.chatSend.subscribe(event=>{
         player.sendMessage(jobs.length?jobs.map(j=>j.blueprintId+": "+j.status+" ("+j.progress+"/"+BLUEPRINTS[j.blueprintId].blocks.length+")").join("\n"):"No jobs");
       }else if(args[1]==="stock"){
         const r=resources(player.id);player.sendMessage("Wood: "+r.wood+" | Stone: "+r.stone);
-      }else player.sendMessage("§6!civ found <name> | society | events | politics | government | laws | law | claim | land | economy | market | enterprise | trade | army | recruitarmy | doctrine | diplomacy | civs | propose | accept | reject | relations | breaktreaty | research | institution | technologies | focus | start | recruit | crew | build hut | jobs | stock");
+      }else player.sendMessage("§6!civ found <name> | society | events | politics | government | laws | law | claim | land | economy | market | enterprise | trade | army | recruitarmy | doctrine | diplomacy | civs | propose | accept | reject | relations | breaktreaty | research | institution | technologies | focus | education | specialists | train | mentor | start | recruit | crew | build hut | jobs | stock");
     }catch(e){player.sendMessage("§c"+String(e));}
   });
 });
